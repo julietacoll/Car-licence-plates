@@ -33,3 +33,18 @@ SELECT TOP 5
 FROM dbo.car_licence_plates
 GROUP BY YEAR(Date)
 ORDER BY Total_Sales DESC;
+
+-- Show disaggregated information of the categories of cars sold, when available
+
+SELECT
+		YEAR(Date) as Date, 
+		SUM(Cars) as Cars, 
+		SUM(Commercial_Heavy) as Commercial_Heavy, 
+		SUM(Commercial_Light) as Commercial_Light, 
+		SUM(Other_Heavy) as Other_Heavy, 
+		SUM(Total_Sales) as Total_Sales
+FROM dbo.car_licence_plates
+WHERE Cars IS NOT NULL
+GROUP BY YEAR(Date)
+ORDER BY Total_Sales DESC; 
+
