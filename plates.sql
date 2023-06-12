@@ -1,6 +1,6 @@
 USE car_licence_plates;
 
--- Years where the sales of imported cars were less than the sales of domestic cars
+-- Years where sales of imported cars were lower than sales of domestic cars
 
 SELECT 
 		YEAR(Date) as Date,
@@ -12,7 +12,7 @@ GROUP BY YEAR(Date)
 HAVING SUM(Imported)<SUM(Domestic)
 ;
 
--- Month where the sales of imported cars were less than the sales of domestic cars, to see if there is any seasonality
+-- Month where sales of imported cars were lower than sales of domestic cars, to see if there is any seasonality
 
 SELECT 
 		MONTH(Date) as Date,
@@ -23,8 +23,7 @@ FROM dbo.car_licence_plates
 GROUP BY MONTH(Date)
 HAVING SUM(Imported)<SUM(Domestic);
 
-
--- Top 5 years with the most total sales
+-- Top 5 years with more total sales
 
 SELECT TOP 5
 		YEAR(Date) as Date,
